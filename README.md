@@ -1,3 +1,10 @@
+# Fork notes
+
+- 月份中文显示
+- 删除了每行标题前的日期显示
+- 调整了代码缩进
+- 理论上可以显示大于 500 行。感谢：水口八记 [建立 Blogger 存档页面（三）（突破500篇限制）](https://blog.shuiba.co/create-blogger-archive-page-3)
+
 # Make Archive Page in Blogger
 
 This little piece of JavaScript takes JSON from the the Google API for Blogger and outputs html that can be interpretted by the blogging platform to produce a hyperlinked list of blog titles followed by the date. An example might be
