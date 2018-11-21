@@ -5,6 +5,7 @@ function LoadTheArchive(TotalFeed)
 	var PostURLs = new Array();
 	var PostYears = new Array();
 	var PostMonths = new Array();
+	var PostDays = new Array();
 
 	if("entry" in TotalFeed.feed) 
 	{
@@ -14,29 +15,30 @@ function LoadTheArchive(TotalFeed)
 
 		for(var PostNum=0; PostNum<PostEntries ; PostNum++) 
 		{
-			var  ThisPost = TotalFeed.feed.entry[PostNum];
-					 PostTitles.push(ThisPost.title.$t);
-					 PostYears.push(ThisPost.published.$t.substring(0,4));
-					 PostMonths.push(ThisPost.published.$t.substring(5,7));
+			var ThisPost = TotalFeed.feed.entry[PostNum];
+					PostTitles.push(ThisPost.title.$t);
+					PostYears.push(ThisPost.published.$t.substring(0,4));
+					PostMonths.push(ThisPost.published.$t.substring(5,7));
+					PostDays.push(ThisPost.published.$t.substring(8,10));
 			var ThisPostURL;
 
 			for(var LinkNum=0; LinkNum < ThisPost.link.length; LinkNum++) 
 			{
-				 if(ThisPost.link[LinkNum].rel == "alternate") 
-				 {
-						 ThisPostURL = ThisPost.link[LinkNum].href;
-						 break
-				 }
+				if(ThisPost.link[LinkNum].rel == "alternate") 
+				{
+						ThisPostURL = ThisPost.link[LinkNum].href;
+						break
+				}
 			}
 
 			PostURLs.push(ThisPostURL);
 		 }
 	}
 
-	DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths);
+	DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths, PostDays);
 }
 
-function DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths)
+function DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths, PostDays)
 {
 	var MonthNames=["一","二","三","四","五","六","七","八","九","十","十一","十二"];
 	var NumberOfEntries=PostTitles.length;
@@ -52,10 +54,10 @@ function DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths)
 			currentMonth = NameOfMonth;
 			currentYear = PostYears[EntryNum];
 
-			document.write("<div class='dateStyle'><br />" + currentYear + "年 " + currentMonth + "月</div>");
+			document.write("<div class='dateStyle'><br />" + currentYear + "&nbsp;年&nbsp;" + currentMonth + "月</div>");
 		}
 
-		document.write('<a href ="'+PostURLs[EntryNum]+'">'+"&emsp;&emsp;&emsp;&ensp;"+PostTitles[EntryNum]+"</a><br />");
+		document.write('<a href ="'+PostURLs[EntryNum] + '"><div class=dayStyle>' + parseInt(PostDays[EntryNum],10) + "日&ensp;</div>" + PostTitles[EntryNum] + "</a><br />");
 	}
 }
 </script>
@@ -66,6 +68,10 @@ function DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths)
 
 <!-- css -->
 <style type="text/css">
-	.dateStyle {
+	.dayStyle { 
+		color: #757575;
+		display: inline-block;
+		width: 3.75em; 
+		text-align: right;
 	}
 </style>
