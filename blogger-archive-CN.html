@@ -57,7 +57,7 @@ function DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths, PostDays)
 			document.write("<div class='dateStyle'><br />" + currentYear + "&nbsp;年&nbsp;" + currentMonth + "月</div>");
 		}
 
-		document.write('<a href ="'+PostURLs[EntryNum] + '"><div class=dayStyle>' + parseInt(PostDays[EntryNum],10) + "日&ensp;</div>" + PostTitles[EntryNum] + "</a><br />");
+		document.write('<a href ="'+PostURLs[EntryNum] + '"><div class=dayStyle>' + parseInt(PostDays[EntryNum],10) + "&nbsp;日&ensp;</div>" + PostTitles[EntryNum] + "</a><br />");
 	}
 }
 </script>
@@ -71,7 +71,7 @@ function DisplaytheTOC(PostTitles, PostURLs, PostYears, PostMonths, PostDays)
 	.dayStyle { 
 		color: #757575;
 		display: inline-block;
-		width: 3.75em; 
+		width: 4em; 
 		text-align: right;
 	}
 </style>
