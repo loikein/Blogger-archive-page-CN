@@ -1,9 +1,11 @@
 # Fork notes
 
+- 20200415 不需要更改代码，复制进页面即可直接使用
 - 月份中文显示
 - 20181121 重新添加日期显示，调整对齐
 - 调整了代码缩进
 - 理论上可以显示大于 500 行。感谢：水口八记 [建立 Blogger 存档页面（三）（突破500篇限制）](https://blog.shuiba.co/create-blogger-archive-page-3)
+
 
 # Make Archive Page in Blogger
 
